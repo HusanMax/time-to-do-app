@@ -12,21 +12,6 @@
       rel="stylesheet"
     />
     <style>
-      :root {
-        --bg: #121212;
-        --panel: #171717;
-        --panel-2: #1c1c1c;
-        --line: #292929;
-        --line-strong: #383838;
-        --text: #f1f1f1;
-        --muted: #8d8d8d;
-        --muted-2: #6d6d6d;
-        --accent: #c8f56b;
-        --danger: #e89090;
-        --radius: 16px;
-        --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-      }
-
       * {
         box-sizing: border-box;
       }
@@ -39,9 +24,9 @@
       body {
         min-height: 100vh;
         margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: var(--font);
+        background: #121212;
+        color: #f1f1f1;
+        font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
         font-size: 15px;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
@@ -62,48 +47,50 @@
       }
 
       :focus-visible {
-        outline: 2px solid var(--accent);
+        outline: 2px solid #c8f56b;
         outline-offset: 2px;
         border-radius: 6px;
       }
 
       .app {
         width: 100%;
-        max-width: none;
         min-height: 100vh;
         margin: 0 auto;
         padding: 28px 24px 18px;
+        display: -webkit-flex;
         display: flex;
+        -webkit-flex-direction: column;
         flex-direction: column;
         gap: 14px;
       }
 
-      .top {
-        display: grid;
-        grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.85fr);
+      .top, .bottom {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
         gap: 14px;
-        flex: 1 1 0;
-        min-height: 0;
+        -webkit-align-items: stretch;
+        align-items: stretch;
       }
 
-      .bottom {
-        display: grid;
-        grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr);
-        gap: 14px;
-        align-items: stretch;
-        flex: 1 1 0;
-        min-height: 0;
+      .top > .card, .bottom > .card {
+        -webkit-flex: 1 1 320px;
+        flex: 1 1 320px;
+        min-width: 0;
       }
 
       .card {
         position: relative;
-        min-width: 0;
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
+        background: #171717;
+        border: 1px solid #292929;
+        border-radius: 16px;
         padding: 20px 22px;
+        display: -webkit-flex;
         display: flex;
+        -webkit-flex-direction: column;
         flex-direction: column;
+        -webkit-transition: border-color 180ms ease;
         transition: border-color 180ms ease;
       }
 
@@ -112,8 +99,11 @@
       }
 
       .card-head {
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: flex-start;
         align-items: flex-start;
+        -webkit-justify-content: space-between;
         justify-content: space-between;
         gap: 14px;
         margin-bottom: 18px;
@@ -125,7 +115,7 @@
         font-weight: 600;
         letter-spacing: 0.16em;
         text-transform: uppercase;
-        color: var(--muted);
+        color: #8d8d8d;
         white-space: nowrap;
       }
 
@@ -139,7 +129,7 @@
 
       .sub {
         margin: 3px 0 0;
-        color: var(--muted);
+        color: #8d8d8d;
         font-size: 12px;
         letter-spacing: 0.01em;
       }
@@ -147,23 +137,24 @@
       /* ---------- Buttons ---------- */
 
       .btn {
+        display: -webkit-inline-flex;
         display: inline-flex;
+        -webkit-align-items: center;
         align-items: center;
+        -webkit-justify-content: center;
         justify-content: center;
         gap: 6px;
         padding: 8px 13px;
-        border: 1px solid var(--line-strong);
+        border: 1px solid #383838;
         border-radius: 9px;
         background: transparent;
-        color: var(--text);
+        color: #f1f1f1;
         font-size: 12.5px;
         font-weight: 600;
         line-height: 1.2;
         white-space: nowrap;
-        transition:
-          background 150ms ease,
-          border-color 150ms ease,
-          color 150ms ease;
+        -webkit-transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+        transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
       }
 
       .btn:hover {
@@ -171,12 +162,13 @@
         border-color: #464646;
       }
       .btn:active {
+        -webkit-transform: translateY(1px);
         transform: translateY(1px);
       }
 
       .btn.primary {
-        background: var(--text);
-        border-color: var(--text);
+        background: #f1f1f1;
+        border-color: #f1f1f1;
         color: #131313;
       }
 
@@ -186,39 +178,40 @@
       }
 
       .icon-btn {
+        display: -webkit-inline-flex;
         display: inline-flex;
+        -webkit-align-items: center;
         align-items: center;
+        -webkit-justify-content: center;
         justify-content: center;
         width: 30px;
         height: 30px;
         padding: 0;
-        border: 1px solid var(--line);
+        border: 1px solid #292929;
         border-radius: 8px;
         background: transparent;
-        color: var(--muted);
-        transition:
-          color 150ms ease,
-          border-color 150ms ease,
-          background 150ms ease;
+        color: #8d8d8d;
+        -webkit-transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
+        transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
       }
 
       .icon-btn:hover {
-        color: var(--text);
-        border-color: var(--line-strong);
+        color: #f1f1f1;
+        border-color: #383838;
         background: #202020;
-      }
-      .icon-btn:active {
-        transform: translateY(1px);
       }
 
       .pill {
+        display: -webkit-inline-flex;
         display: inline-flex;
+        -webkit-align-items: center;
         align-items: center;
+        -webkit-justify-content: center;
         justify-content: center;
         padding: 4px 9px;
-        border: 1px solid var(--line);
+        border: 1px solid #292929;
         border-radius: 999px;
-        color: var(--muted);
+        color: #8d8d8d;
         font-size: 11px;
         font-weight: 600;
         font-variant-numeric: tabular-nums;
@@ -232,33 +225,41 @@
       }
 
       .weather-place {
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: baseline;
         align-items: baseline;
         gap: 7px;
+        -webkit-flex-wrap: wrap;
         flex-wrap: wrap;
         font-size: 13px;
-        color: var(--muted);
+        color: #8d8d8d;
       }
 
       .weather-place strong {
-        color: var(--text);
+        color: #f1f1f1;
         font-weight: 600;
         font-size: 14px;
       }
 
       .weather-main {
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: center;
         align-items: center;
+        -webkit-justify-content: space-between;
         justify-content: space-between;
         gap: 12px;
         margin-top: 12px;
       }
 
       .weather-temp {
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: flex-start;
         align-items: flex-start;
         gap: 2px;
-        font-size: clamp(46px, 5vw, 58px);
+        font-size: 52px;
         font-weight: 600;
         line-height: 1;
         letter-spacing: -0.055em;
@@ -267,59 +268,57 @@
 
       .weather-temp .unit {
         margin-top: 4px;
-        font-size: 0.34em;
+        font-size: 18px;
         font-weight: 500;
-        letter-spacing: 0;
-        color: var(--muted);
+        color: #8d8d8d;
       }
 
       .weather-desc {
         margin-top: 8px;
         font-size: 13px;
-        color: var(--muted);
+        color: #8d8d8d;
       }
 
       .weather-icon {
         font-size: 46px;
         line-height: 1;
-        filter: saturate(0.8);
-        user-select: none;
       }
 
       .weather-meta {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
         gap: 8px;
         margin-top: auto;
         padding-top: 16px;
-        border-top: 1px solid var(--line);
+        border-top: 1px solid #292929;
       }
 
       .weather-meta div {
+        display: -webkit-flex;
         display: flex;
+        -webkit-flex-direction: column;
         flex-direction: column;
         gap: 3px;
         min-width: 0;
       }
       .weather-meta span {
         font-size: 10.5px;
-        color: var(--muted);
-        letter-spacing: 0.02em;
+        color: #8d8d8d;
       }
       .weather-meta strong {
         font-size: 13px;
         font-weight: 600;
         font-variant-numeric: tabular-nums;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
 
       .status {
         margin: 10px 0 0;
         font-size: 11.5px;
         line-height: 1.45;
-        color: var(--danger);
+        color: #e89090;
       }
 
       .status:empty {
@@ -328,19 +327,13 @@
 
       /* ---------- Clock ---------- */
 
-      .clock-card {
-        min-height: 100%;
-      }
-
-      .edit-btn {
-        margin-top: -3px;
-      }
-
       .clock-time {
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: baseline;
         align-items: baseline;
         gap: 1px;
-        font-size: clamp(52px, 7.6vw, 86px);
+        font-size: 72px;
         font-weight: 600;
         line-height: 0.92;
         letter-spacing: -0.055em;
@@ -348,17 +341,15 @@
       }
 
       .clock-sec {
-        font-size: 0.4em;
+        font-size: 28px;
         font-weight: 500;
-        letter-spacing: -0.01em;
-        color: var(--muted);
+        color: #8d8d8d;
       }
 
       .clock-date {
         margin-top: 11px;
         font-size: 13.5px;
-        color: var(--muted);
-        letter-spacing: 0.005em;
+        color: #8d8d8d;
       }
 
       /* ---------- Pomodoro ---------- */
@@ -366,23 +357,28 @@
       .pomodoro {
         margin-top: 22px;
         padding-top: 18px;
-        border-top: 1px solid var(--line);
+        border-top: 1px solid #292929;
       }
 
       .pomo-head {
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: center;
         align-items: center;
+        -webkit-justify-content: space-between;
         justify-content: space-between;
         gap: 12px;
+        -webkit-flex-wrap: wrap;
         flex-wrap: wrap;
       }
 
       .pomo-modes {
+        display: -webkit-inline-flex;
         display: inline-flex;
         gap: 2px;
         padding: 3px;
         background: #131313;
-        border: 1px solid var(--line);
+        border: 1px solid #292929;
         border-radius: 10px;
       }
 
@@ -390,52 +386,48 @@
         border: 0;
         border-radius: 7px;
         background: transparent;
-        color: var(--muted);
+        color: #8d8d8d;
         padding: 5px 12px;
         font-size: 11.5px;
         font-weight: 600;
-        transition:
-          background 150ms ease,
-          color 150ms ease;
-      }
-
-      .pomo-mode:hover {
-        color: var(--text);
       }
 
       .pomo-mode.is-active {
         background: #2a2a2a;
-        color: var(--text);
+        color: #f1f1f1;
       }
 
       .pomo-sessions {
         font-size: 11.5px;
-        color: var(--muted);
-        font-variant-numeric: tabular-nums;
+        color: #8d8d8d;
       }
 
       .pomo-row {
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: flex-end;
         align-items: flex-end;
+        -webkit-justify-content: space-between;
         justify-content: space-between;
         gap: 14px;
+        -webkit-flex-wrap: wrap;
         flex-wrap: wrap;
         margin-top: 12px;
       }
 
       .pomo-time {
-        font-size: clamp(34px, 4vw, 42px);
+        font-size: 38px;
         font-weight: 600;
         line-height: 1;
         letter-spacing: -0.035em;
-        font-variant-numeric: tabular-nums;
       }
 
       .pomo-time.is-break {
-        color: var(--accent);
+        color: #c8f56b;
       }
 
       .pomo-actions {
+        display: -webkit-flex;
         display: flex;
         gap: 8px;
         padding-bottom: 2px;
@@ -453,8 +445,8 @@
         display: block;
         width: 0%;
         height: 100%;
-        background: var(--accent);
-        border-radius: inherit;
+        background: #c8f56b;
+        -webkit-transition: width 300ms linear;
         transition: width 300ms linear;
       }
 
@@ -462,42 +454,28 @@
         min-height: 16px;
         margin: 8px 0 0;
         font-size: 11.5px;
-        color: var(--accent);
+        color: #c8f56b;
       }
 
       /* ---------- Todo ---------- */
 
-      .todo-card {
-        min-height: 300px;
-      }
-
       .todo-form {
+        display: -webkit-flex;
         display: flex;
         gap: 8px;
         margin-bottom: 6px;
       }
 
       .todo-form input {
+        -webkit-flex: 1 1 auto;
         flex: 1 1 auto;
         min-width: 0;
         padding: 10px 12px;
-        border: 1px solid var(--line);
+        border: 1px solid #292929;
         border-radius: 9px;
         background: #131313;
-        color: var(--text);
+        color: #f1f1f1;
         font-size: 13px;
-        transition: border-color 150ms ease;
-      }
-
-      .todo-form input::placeholder {
-        color: var(--muted-2);
-      }
-      .todo-form input:focus {
-        outline: none;
-        border-color: #4a4a4a;
-      }
-      .todo-form .btn {
-        flex: 0 0 auto;
       }
 
       .todo-list {
@@ -506,27 +484,16 @@
         padding: 2px 0 0;
         max-height: 286px;
         overflow-y: auto;
-        scrollbar-width: thin;
-        scrollbar-color: #333 transparent;
-      }
-
-      .todo-list::-webkit-scrollbar {
-        width: 6px;
-      }
-      .todo-list::-webkit-scrollbar-thumb {
-        background: #333;
-        border-radius: 999px;
-      }
-      .todo-list::-webkit-scrollbar-track {
-        background: transparent;
       }
 
       .todo-item {
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: center;
         align-items: center;
         gap: 11px;
         padding: 11px 2px;
-        border-top: 1px solid var(--line);
+        border-top: 1px solid #292929;
       }
 
       .todo-item:first-child {
@@ -534,8 +501,9 @@
       }
 
       .todo-check {
-        appearance: none;
         -webkit-appearance: none;
+        appearance: none;
+        -webkit-flex: 0 0 auto;
         flex: 0 0 auto;
         width: 17px;
         height: 17px;
@@ -545,50 +513,33 @@
         background: transparent;
         cursor: pointer;
         position: relative;
-        transition:
-          background 140ms ease,
-          border-color 140ms ease;
-      }
-
-      .todo-check:hover {
-        border-color: #5a5a5a;
       }
 
       .todo-check:checked {
-        background: var(--accent);
-        border-color: var(--accent);
-      }
-
-      .todo-check:checked::after {
-        content: "";
-        position: absolute;
-        left: 5px;
-        top: 2px;
-        width: 4px;
-        height: 8px;
-        border: solid #141414;
-        border-width: 0 2px 2px 0;
-        transform: rotate(42deg);
+        background: #c8f56b;
+        border-color: #c8f56b;
       }
 
       .todo-text {
+        -webkit-flex: 1 1 auto;
         flex: 1 1 auto;
         min-width: 0;
         font-size: 13.5px;
-        line-height: 1.4;
-        overflow-wrap: anywhere;
       }
 
       .todo-item.done .todo-text {
-        color: var(--muted);
+        color: #8d8d8d;
         text-decoration: line-through;
-        text-decoration-color: #565656;
       }
 
       .todo-del {
+        -webkit-flex: 0 0 auto;
         flex: 0 0 auto;
+        display: -webkit-inline-flex;
         display: inline-flex;
+        -webkit-align-items: center;
         align-items: center;
+        -webkit-justify-content: center;
         justify-content: center;
         width: 26px;
         height: 26px;
@@ -596,49 +547,30 @@
         border: 0;
         border-radius: 6px;
         background: transparent;
-        color: var(--muted-2);
-        opacity: 0;
-        transition:
-          opacity 140ms ease,
-          color 140ms ease,
-          background 140ms ease;
-      }
-
-      .todo-item:hover .todo-del,
-      .todo-del:focus-visible {
-        opacity: 1;
+        color: #6d6d6d;
       }
       .todo-del:hover {
-        color: var(--danger);
+        color: #e89090;
         background: #241919;
       }
 
-      @media (hover: none) {
-        .todo-del {
-          opacity: 1;
-        }
-      }
-
       .todo-empty {
-        flex: 1 1 auto;
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: center;
         align-items: center;
+        -webkit-justify-content: center;
         justify-content: center;
         padding: 28px 0;
         text-align: center;
         font-size: 12.5px;
-        color: var(--muted-2);
+        color: #6d6d6d;
       }
-
       .todo-empty[hidden] {
         display: none;
       }
 
       /* ---------- Prayer ---------- */
-
-      .prayer-card {
-        min-height: 300px;
-      }
 
       .prayer-list {
         list-style: none;
@@ -647,72 +579,61 @@
       }
 
       .prayer-row {
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: center;
         align-items: center;
+        -webkit-justify-content: space-between;
         justify-content: space-between;
         gap: 12px;
         padding: 8px 10px;
         border: 1px solid transparent;
         border-radius: 9px;
-        transition:
-          background 160ms ease,
-          border-color 160ms ease;
-      }
-
-      .prayer-row + .prayer-row {
-        margin-top: 1px;
       }
 
       .prayer-name {
         font-size: 13px;
-        color: var(--muted);
+        color: #8d8d8d;
       }
 
       .prayer-time {
         font-size: 13.5px;
         font-weight: 600;
         color: #dedede;
-        font-variant-numeric: tabular-nums;
-        letter-spacing: 0.01em;
       }
 
       .prayer-row.is-next {
         background: #1a2013;
         border-color: #303a24;
       }
-
       .prayer-row.is-next .prayer-name {
         color: #dce8c8;
       }
       .prayer-row.is-next .prayer-time {
-        color: var(--accent);
+        color: #c8f56b;
       }
 
       .prayer-next {
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: center;
         align-items: center;
+        -webkit-justify-content: space-between;
         justify-content: space-between;
         gap: 10px;
+        -webkit-flex-wrap: wrap;
         flex-wrap: wrap;
-        margin: auto 0 0;
-        padding-top: 14px;
-        border-top: 1px solid var(--line);
-        font-size: 11.5px;
-        color: var(--muted);
-      }
-
-      .prayer-next:not(:empty) {
         margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid #292929;
+        font-size: 11.5px;
+        color: #8d8d8d;
       }
       .prayer-next strong {
-        color: var(--text);
-        font-weight: 600;
+        color: #f1f1f1;
       }
-
       .prayer-count {
-        color: var(--muted);
-        font-variant-numeric: tabular-nums;
-        font-size: 11.5px;
+        color: #8d8d8d;
       }
 
       /* ---------- Footer ---------- */
@@ -721,239 +642,136 @@
         margin-top: 4px;
         text-align: center;
         font-size: 10.5px;
-        color: var(--muted-2);
-        letter-spacing: 0.02em;
+        color: #6d6d6d;
       }
-
       .foot a {
-        color: var(--muted-2);
+        color: #6d6d6d;
         text-decoration: none;
         border-bottom: 1px solid #2c2c2c;
       }
-      .foot a:hover {
-        color: var(--muted);
+
+      /* ---------- Modal Fallback for Dialog ---------- */
+
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        padding: 16px;
       }
 
-      /* ---------- Dialog ---------- */
-
-      dialog {
-        width: min(480px, calc(100vw - 32px));
-        max-height: calc(100vh - 48px);
-        padding: 0;
-        border: 1px solid var(--line-strong);
+      .modal-box {
+        width: 440px;
+        max-width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        border: 1px solid #383838;
         border-radius: 18px;
         background: #161616;
-        color: var(--text);
+        color: #f1f1f1;
         box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
       }
 
-      dialog::backdrop {
-        background: rgba(0, 0, 0, 0.66);
-        backdrop-filter: blur(3px);
-      }
-
       .dialog-head {
+        display: -webkit-flex;
         display: flex;
+        -webkit-align-items: flex-start;
         align-items: flex-start;
+        -webkit-justify-content: space-between;
         justify-content: space-between;
         gap: 14px;
         padding: 20px 22px 0;
       }
-
       .dialog-title {
         margin: 0;
         font-size: 17px;
         font-weight: 600;
-        letter-spacing: -0.01em;
       }
       .dialog-desc {
         margin: 4px 0 0;
-        color: var(--muted);
+        color: #8d8d8d;
         font-size: 12px;
       }
-
       .dialog-body {
         padding: 18px 22px 4px;
+        display: -webkit-flex;
         display: flex;
+        -webkit-flex-direction: column;
         flex-direction: column;
         gap: 14px;
-        overflow-y: auto;
       }
-
       .field {
+        display: -webkit-flex;
         display: flex;
+        -webkit-flex-direction: column;
         flex-direction: column;
         gap: 6px;
       }
       .field > span {
         font-size: 11.5px;
         font-weight: 600;
-        color: var(--muted);
-        letter-spacing: 0.02em;
+        color: #8d8d8d;
       }
-
-      .field input,
-      .field select {
+      .field input, .field select {
         width: 100%;
         padding: 10px 12px;
-        border: 1px solid var(--line);
+        border: 1px solid #292929;
         border-radius: 9px;
         background: #101010;
-        color: var(--text);
+        color: #f1f1f1;
         font-size: 13px;
-        transition: border-color 150ms ease;
       }
-
-      .field input:focus,
-      .field select:focus {
-        outline: none;
-        border-color: #4d4d4d;
-      }
-
       .field-hint {
         font-size: 11px;
-        color: var(--muted-2);
+        color: #6d6d6d;
       }
-
       .field-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: -webkit-flex;
+        display: flex;
         gap: 12px;
       }
-
+      .field-row > label {
+        -webkit-flex: 1;
+        flex: 1;
+      }
       .dialog-divider {
         height: 1px;
-        background: var(--line);
+        background: #292929;
         margin: 2px 0;
       }
-
-      .dialog-actions {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        flex-wrap: wrap;
-        padding: 14px 22px 20px;
-      }
-
       .danger-actions {
+        display: -webkit-flex;
         display: flex;
         gap: 6px;
-        flex-wrap: wrap;
       }
-
       .link-btn {
         padding: 0;
         border: 0;
         background: none;
-        color: var(--muted);
+        color: #8d8d8d;
         font-size: 11.5px;
         text-decoration: underline;
-        text-decoration-color: #3a3a3a;
-        text-underline-offset: 3px;
       }
-
-      .link-btn:hover {
-        color: var(--danger);
-        text-decoration-color: currentColor;
-      }
-
       .dialog-status {
         min-height: 16px;
         margin: 0;
         padding: 0 22px;
         font-size: 11.5px;
-        color: var(--danger);
+        color: #e89090;
       }
-
-      .dialog-status:empty {
-        display: none;
-      }
-
-      /* ---------- Responsive ---------- */
-
-      @media (max-width: 860px) {
-        .app {
-          padding: 18px 16px 14px;
-        }
-        .top,
-        .bottom {
-          grid-template-columns: 1fr;
-          flex: 0 0 auto;
-        }
-        .weather-card {
-          min-height: 0;
-        }
-        .weather-meta {
-          margin-top: 18px;
-        }
-        .clock-card {
-          min-height: 0;
-        }
-        .todo-card,
-        .prayer-card {
-          min-height: 0;
-        }
-        .todo-list {
-          max-height: 320px;
-        }
-      }
-
-      @media (max-width: 560px) {
-        .app {
-          padding: 14px 12px 12px;
-          gap: 12px;
-        }
-        .top,
-        .bottom {
-          gap: 12px;
-        }
-        .card {
-          padding: 18px;
-          border-radius: 14px;
-        }
-        .card-head {
-          margin-bottom: 16px;
-        }
-        .clock-time {
-          font-size: clamp(46px, 13vw, 64px);
-        }
-        .clock-sec {
-          font-size: 0.42em;
-        }
-        .edit-btn {
-          padding: 8px 10px;
-        }
-        .edit-btn span {
-          display: none;
-        }
-        .pomo-row {
-          align-items: center;
-        }
-        .pomo-actions {
-          width: 100%;
-        }
-        .pomo-actions .btn {
-          flex: 1;
-        }
-        .todo-form .btn {
-          padding: 9px 12px;
-        }
-        .weather-icon {
-          font-size: 40px;
-        }
-        .foot {
-          padding: 0 8px;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          transition-duration: 0.01ms !important;
-          animation-duration: 0.01ms !important;
-        }
+      .dialog-actions {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        padding: 14px 22px 20px;
       }
     </style>
   </head>
@@ -961,36 +779,17 @@
     <div class="app">
       <div class="top">
         <!-- Weather -->
-        <section class="card weather-card" aria-labelledby="weather-title">
+        <section class="card weather-card">
           <div class="card-head">
-            <span class="label" id="weather-title">Obi xavo</span>
-            <button
-              class="icon-btn"
-              id="weather-refresh"
-              type="button"
-              aria-label="Ob-havoni yangilash"
-              title="Yangilash"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M21 12a9 9 0 1 1-2.64-6.36" />
-                <path d="M21 3v6h-6" />
-              </svg>
+            <span class="label">Obi xavo</span>
+            <button class="icon-btn" id="weather-refresh" type="button" title="Yangilash">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
             </button>
           </div>
 
           <div class="weather-place">
             <strong id="weather-city">Tashkent</strong>
-            <span aria-hidden="true">·</span>
+            <span>·</span>
             <span id="weather-country">Uzbekistan</span>
           </div>
 
@@ -1001,495 +800,324 @@
               </div>
               <div class="weather-desc" id="weather-desc">Yuklanmoqda…</div>
             </div>
-            <div class="weather-icon" id="weather-icon" aria-hidden="true">
-              ⛅
-            </div>
+            <div class="weather-icon" id="weather-icon">⛅</div>
           </div>
 
           <div class="weather-meta">
-            <div>
-              <span>His qilinadi</span><strong id="weather-feels">—</strong>
-            </div>
-            <div>
-              <span>Namlik</span><strong id="weather-humidity">—</strong>
-            </div>
+            <div><span>His qilinadi</span><strong id="weather-feels">—</strong></div>
+            <div><span>Namlik</span><strong id="weather-humidity">—</strong></div>
             <div><span>Shamol</span><strong id="weather-wind">—</strong></div>
           </div>
-          <p class="status" id="weather-status" role="status"></p>
+          <p class="status" id="weather-status"></p>
         </section>
 
         <!-- Clock + Pomodoro -->
-        <section class="card clock-card" aria-labelledby="clock-title">
+        <section class="card clock-card">
           <div class="card-head">
-            <span class="label" id="clock-title">Vaqt va sana</span>
+            <span class="label">Vaqt va sana</span>
             <button class="btn edit-btn" id="open-settings" type="button">
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M12 20h9" />
-                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-              </svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
               <span>Tahrirlash</span>
             </button>
           </div>
 
-          <div class="clock-time" aria-label="Joriy vaqt">
-            <span id="clock-time">00:00</span
-            ><span class="clock-sec" id="clock-seconds">:00</span>
+          <div class="clock-time">
+            <span id="clock-time">00:00</span><span class="clock-sec" id="clock-seconds">:00</span>
           </div>
           <div class="clock-date" id="clock-date">—</div>
 
           <div class="pomodoro">
             <div class="pomo-head">
-              <div class="pomo-modes" role="group" aria-label="Pomodoro rejimi">
-                <button
-                  class="pomo-mode is-active"
-                  type="button"
-                  data-mode="focus"
-                >
-                  Fokus
-                </button>
-                <button class="pomo-mode" type="button" data-mode="break">
-                  Tanaffus
-                </button>
+              <div class="pomo-modes">
+                <button class="pomo-mode is-active" type="button" data-mode="focus">Fokus</button>
+                <button class="pomo-mode" type="button" data-mode="break">Tanaffus</button>
               </div>
               <span class="pomo-sessions" id="pomo-sessions">0 seans</span>
             </div>
 
             <div class="pomo-row">
-              <div
-                class="pomo-time"
-                id="pomo-time"
-                role="timer"
-                aria-live="off"
-              >
-                25:00
-              </div>
+              <div class="pomo-time" id="pomo-time">25:00</div>
               <div class="pomo-actions">
-                <button class="btn primary" id="pomo-start" type="button">
-                  Boshlash
-                </button>
-                <button class="btn" id="pomo-reset" type="button">
-                  Tiklash
-                </button>
+                <button class="btn primary" id="pomo-start" type="button">Boshlash</button>
+                <button class="btn" id="pomo-reset" type="button">Tiklash</button>
               </div>
             </div>
-            <div class="pomo-progress" aria-hidden="true">
-              <span id="pomo-bar"></span>
-            </div>
-            <p class="pomo-note" id="pomo-note" role="status"></p>
+            <div class="pomo-progress"><span id="pomo-bar"></span></div>
+            <p class="pomo-note" id="pomo-note"></p>
           </div>
         </section>
       </div>
 
       <div class="bottom">
         <!-- Todo -->
-        <section class="card todo-card" aria-labelledby="todo-title">
+        <section class="card todo-card">
           <div class="card-head">
             <div>
               <span class="label">Vazifalar</span>
-              <h2 class="card-title" id="todo-title">Bugungi reja</h2>
+              <h2 class="card-title">Bugungi reja</h2>
             </div>
-            <span class="pill" id="todo-count" aria-live="polite">0 / 0</span>
+            <span class="pill" id="todo-count">0 / 0</span>
           </div>
 
-          <form class="todo-form" id="todo-form" autocomplete="off">
-            <input
-              id="todo-input"
-              type="text"
-              maxlength="120"
-              placeholder="Yangi vazifa qo'shish…"
-              aria-label="Yangi vazifa"
-            />
+          <form class="todo-form" id="todo-form">
+            <input id="todo-input" type="text" maxlength="120" placeholder="Yangi vazifa qo'shish…" />
             <button class="btn primary" type="submit">Qo'shish</button>
           </form>
 
           <ul class="todo-list" id="todo-list"></ul>
-          <div class="todo-empty" id="todo-empty">
-            Hozircha vazifa yo'q. Birinchisini qo'shing.
-          </div>
+          <div class="todo-empty" id="todo-empty">Hozircha vazifa yo'q. Birinchisini qo'shing.</div>
         </section>
 
         <!-- Prayer times -->
-        <section class="card prayer-card" aria-labelledby="prayer-title">
+        <section class="card prayer-card">
           <div class="card-head">
             <div>
               <span class="label">Namoz vaqti</span>
               <h2 class="card-title" id="prayer-title">Tashkent</h2>
               <p class="sub" id="prayer-hijri">Bugungi vaqtlar</p>
             </div>
-            <button
-              class="icon-btn"
-              id="prayer-refresh"
-              type="button"
-              aria-label="Namoz vaqtlarini yangilash"
-              title="Yangilash"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M21 12a9 9 0 1 1-2.64-6.36" />
-                <path d="M21 3v6h-6" />
-              </svg>
+            <button class="icon-btn" id="prayer-refresh" type="button" title="Yangilash">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
             </button>
           </div>
 
           <ul class="prayer-list" id="prayer-list"></ul>
           <p class="prayer-next" id="prayer-next"></p>
-          <p class="status" id="prayer-status" role="status"></p>
+          <p class="status" id="prayer-status"></p>
         </section>
       </div>
 
       <p class="foot">
-        Ma'lumotlar:
-        <a
-          href="https://open-meteo.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Open-Meteo</a
-        >
-        ·
-        <a
-          href="https://aladhan.com/prayer-times-api"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Aladhan</a
-        >
+        Ma'lumotlar: <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a> · <a href="https://aladhan.com/prayer-times-api" target="_blank">Aladhan</a>
       </p>
     </div>
 
-    <!-- Settings -->
-    <dialog id="settings-dialog" aria-labelledby="settings-title">
-      <form id="settings-form">
-        <div class="dialog-head">
-          <div>
-            <h2 class="dialog-title" id="settings-title">Tahrirlash</h2>
-            <p class="dialog-desc">
-              Shahar va Pomodoro vaqtlarini o'zgartiring.
-            </p>
-          </div>
-          <button
-            class="icon-btn"
-            type="button"
-            id="settings-close"
-            aria-label="Yopish"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              aria-hidden="true"
-            >
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        <div class="dialog-body">
-          <label class="field">
-            <span>Shahar</span>
-            <input
-              id="settings-city"
-              type="text"
-              maxlength="60"
-              placeholder="Tashkent"
-              list="city-options"
-              required
-            />
-            <datalist id="city-options">
-              <option value="Tashkent"></option>
-              <option value="Samarqand"></option>
-              <option value="Bukhara"></option>
-              <option value="Khiva"></option>
-              <option value="Nukus"></option>
-              <option value="Andijon"></option>
-              <option value="Farg'ona"></option>
-              <option value="Namangan"></option>
-              <option value="Qarshi"></option>
-              <option value="Termiz"></option>
-              <option value="Jizzax"></option>
-              <option value="Urgench"></option>
-              <option value="Navoiy"></option>
-            </datalist>
-            <span class="field-hint"
-              >Ob-havo va namoz vaqtlari shu shahar uchun olinadi.</span
-            >
-          </label>
-
-          <div class="field-row">
-            <label class="field">
-              <span>Fokus (daqiqa)</span>
-              <input
-                id="settings-focus"
-                type="number"
-                min="1"
-                max="120"
-                step="1"
-                required
-              />
-            </label>
-            <label class="field">
-              <span>Tanaffus (daqiqa)</span>
-              <input
-                id="settings-break"
-                type="number"
-                min="1"
-                max="60"
-                step="1"
-                required
-              />
-            </label>
-          </div>
-
-          <div class="dialog-divider"></div>
-
-          <div class="danger-actions">
-            <button class="link-btn" type="button" id="clear-todos">
-              Vazifalarni tozalash
-            </button>
-            <button class="link-btn" type="button" id="reset-settings">
-              Sozlamalarni tiklash
+    <!-- Settings Modal Fallback -->
+    <div class="modal-overlay" id="settings-dialog">
+      <div class="modal-box">
+        <form id="settings-form">
+          <div class="dialog-head">
+            <div>
+              <h2 class="dialog-title">Tahrirlash</h2>
+              <p class="dialog-desc">Shahar va Pomodoro vaqtlarini o'zgartiring.</p>
+            </div>
+            <button class="icon-btn" type="button" id="settings-close">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
           </div>
-        </div>
 
-        <p class="dialog-status" id="settings-status" role="status"></p>
+          <div class="dialog-body">
+            <label class="field">
+              <span>Shahar</span>
+              <input id="settings-city" type="text" maxlength="60" required />
+              <span class="field-hint">Ob-havo va namoz vaqtlari shu shahar uchun olinadi.</span>
+            </label>
 
-        <div class="dialog-actions">
-          <button class="btn" type="button" id="settings-cancel">
-            Bekor qilish
-          </button>
-          <button class="btn primary" type="submit">Saqlash</button>
-        </div>
-      </form>
-    </dialog>
+            <div class="field-row">
+              <label class="field">
+                <span>Fokus (daqiqa)</span>
+                <input id="settings-focus" type="number" min="1" max="120" step="1" required />
+              </label>
+              <label class="field">
+                <span>Tanaffus (daqiqa)</span>
+                <input id="settings-break" type="number" min="1" max="60" step="1" required />
+              </label>
+            </div>
 
-    <noscript>
-      <div style="padding: 20px; text-align: center; color: #aaa">
-        Bu panel ishlashi uchun JavaScript yoqilgan bo'lishi kerak.
+            <div class="dialog-divider"></div>
+
+            <div class="danger-actions">
+              <button class="link-btn" type="button" id="clear-todos">Vazifalarni tozalash</button>
+              <button class="link-btn" type="button" id="reset-settings">Sozlamalarni tiklash</button>
+            </div>
+          </div>
+
+          <p class="dialog-status" id="settings-status"></p>
+
+          <div class="dialog-actions">
+            <button class="btn" type="button" id="settings-cancel">Bekor qilish</button>
+            <button class="btn primary" type="submit">Saqlash</button>
+          </div>
+        </form>
       </div>
-    </noscript>
+    </div>
 
     <script>
-      (() => {
+      (function() {
         "use strict";
 
-        /* ---------------- Storage ---------------- */
+        var PREFIX = "bento-dashboard:";
+        var DEFAULTS = { city: "Tashkent", focus: 25, break: 5 };
 
-        const PREFIX = "bento-dashboard:";
-        const DEFAULTS = Object.freeze({
-          city: "Tashkent",
-          focus: 25,
-          break: 5,
-        });
-
-        const read = (key, fallback) => {
+        function read(key, fallback) {
           try {
-            const raw = localStorage.getItem(PREFIX + key);
+            var raw = localStorage.getItem(PREFIX + key);
             return raw === null ? fallback : JSON.parse(raw);
-          } catch {
+          } catch (e) {
             return fallback;
           }
-        };
-
-        const write = (key, value) => {
-          try {
-            localStorage.setItem(PREFIX + key, JSON.stringify(value));
-          } catch {
-            /* Storage disabled or full — the app keeps working in memory. */
-          }
-        };
-
-        const remove = (key) => {
-          try {
-            localStorage.removeItem(PREFIX + key);
-          } catch {
-            /* ignore */
-          }
-        };
-
-        const settings = { ...DEFAULTS, ...read("settings", {}) };
-        const savedTodos = read("todos", []);
-        let todos = Array.isArray(savedTodos)
-          ? savedTodos.filter((todo) => todo && typeof todo.text === "string")
-          : [];
-
-        /* ---------------- Helpers ---------------- */
-
-        const $ = (id) => document.getElementById(id);
-        const pad = (n) => String(n).padStart(2, "0");
-        const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
-
-        // Guard against corrupted or hand-edited localStorage values.
-        settings.city =
-          typeof settings.city === "string" && settings.city.trim()
-            ? settings.city.trim()
-            : DEFAULTS.city;
-        settings.focus = clamp(
-          Math.round(Number(settings.focus) || DEFAULTS.focus),
-          1,
-          120,
-        );
-        settings.break = clamp(
-          Math.round(Number(settings.break) || DEFAULTS.break),
-          1,
-          60,
-        );
-
-        const UZ_MONTHS = [
-          "yanvar",
-          "fevral",
-          "mart",
-          "aprel",
-          "may",
-          "iyun",
-          "iyul",
-          "avgust",
-          "sentabr",
-          "oktabr",
-          "noyabr",
-          "dekabr",
-        ];
-        const UZ_DAYS = [
-          "yakshanba",
-          "dushanba",
-          "seshanba",
-          "chorshanba",
-          "payshanba",
-          "juma",
-          "shanba",
-        ];
-
-        function formatUzDate(date) {
-          const weekday = UZ_DAYS[date.getDay()];
-          return `${weekday.charAt(0).toUpperCase()}${weekday.slice(1)}, ${date.getDate()}-${UZ_MONTHS[date.getMonth()]}, ${date.getFullYear()}`;
         }
 
-        const timeFormatterCache = new Map();
+        function write(key, value) {
+          try {
+            localStorage.setItem(PREFIX + key, JSON.stringify(value));
+          } catch (e) {}
+        }
+
+        function remove(key) {
+          try {
+            localStorage.removeItem(PREFIX + key);
+          } catch (e) {}
+        }
+
+        var settings = read("settings", {});
+        if (!settings.city) settings.city = DEFAULTS.city;
+        if (!settings.focus) settings.focus = DEFAULTS.focus;
+        if (!settings.break) settings.break = DEFAULTS.break;
+
+        var savedTodos = read("todos", []);
+        var todos = [];
+        if (Object.prototype.toString.call(savedTodos) === '[object Array]') {
+          for (var i = 0; i < savedTodos.length; i++) {
+            if (savedTodos[i] && typeof savedTodos[i].text === "string") {
+              todos.push(savedTodos[i]);
+            }
+          }
+        }
+
+        function $(id) { return document.getElementById(id); }
+        
+        function pad(n) {
+          var s = String(n);
+          return s.length < 2 ? "0" + s : s;
+        }
+
+        function clamp(n, min, max) {
+          return Math.min(max, Math.max(min, n));
+        }
+
+        var UZ_MONTHS = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avgust", "sentabr", "oktabr", "noyabr", "dekabr"];
+        var UZ_DAYS = ["yakshanba", "dushanba", "seshanba", "chorshanba", "payshanba", "juma", "shanba"];
+
+        function formatUzDate(date) {
+          var weekday = UZ_DAYS[date.getDay()];
+          return weekday.charAt(0).toUpperCase() + weekday.slice(1) + ", " + date.getDate() + "-" + UZ_MONTHS[date.getMonth()] + ", " + date.getFullYear();
+        }
 
         function getZonedParts(timeZone) {
           try {
-            let formatter = timeFormatterCache.get(timeZone);
-            if (!formatter) {
-              formatter = new Intl.DateTimeFormat("en-US", {
-                timeZone,
-                hourCycle: "h23",
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-              });
-              timeFormatterCache.set(timeZone, formatter);
+            var formatter = new Intl.DateTimeFormat("en-US", {
+              timeZone: timeZone,
+              hour12: false,
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit"
+            });
+            var parts = {};
+            var arr = formatter.formatToParts(new Date());
+            for (var i = 0; i < arr.length; i++) {
+              parts[arr[i].type] = arr[i].value;
             }
-            const parts = {};
-            for (const part of formatter.formatToParts(new Date()))
-              parts[part.type] = part.value;
             return {
               year: Number(parts.year),
               month: Number(parts.month),
               day: Number(parts.day),
               hour: Number(parts.hour) % 24,
               minute: Number(parts.minute),
-              second: Number(parts.second),
+              second: Number(parts.second)
             };
-          } catch {
-            const now = new Date();
+          } catch (e) {
+            var now = new Date();
             return {
               year: now.getFullYear(),
               month: now.getMonth() + 1,
               day: now.getDate(),
               hour: now.getHours(),
               minute: now.getMinutes(),
-              second: now.getSeconds(),
+              second: now.getSeconds()
             };
           }
         }
 
         function cityNowDate(timeZone) {
-          const p = getZonedParts(timeZone);
-          return new Date(
-            p.year,
-            p.month - 1,
-            p.day,
-            p.hour,
-            p.minute,
-            p.second,
-          );
+          var p = getZonedParts(timeZone);
+          return new Date(p.year, p.month - 1, p.day, p.hour, p.minute, p.second);
         }
 
-        async function fetchJSON(url) {
-          const options = { headers: { Accept: "application/json" } };
-          if (typeof AbortSignal !== "undefined" && AbortSignal.timeout) {
-            options.signal = AbortSignal.timeout(12000);
+        function buildQuery(params) {
+          var query = [];
+          for (var key in params) {
+            if (params.hasOwnProperty(key) && params[key] !== null && params[key] !== undefined) {
+              query.push(encodeURIComponent(key) + "=" + encodeURIComponent(params[key]));
+            }
           }
-          const response = await fetch(url, options);
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          return response.json();
+          return query.join("&");
+        }
+
+        function fetchJSON(url, callback, errCallback) {
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", url, true);
+          xhr.setRequestHeader("Accept", "application/json");
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                try {
+                  var data = JSON.parse(xhr.responseText);
+                  callback(data);
+                } catch (err) {
+                  errCallback(err);
+                }
+              } else {
+                errCallback(new Error("HTTP " + xhr.status));
+              }
+            }
+          };
+          xhr.onerror = function() { errCallback(new Error("Network error")); };
+          xhr.send();
         }
 
         /* ---------------- Clock ---------------- */
-
-        const clockTimeEl = $("clock-time");
-        const clockSecondsEl = $("clock-seconds");
-        const clockDateEl = $("clock-date");
+        var clockTimeEl = $("clock-time");
+        var clockSecondsEl = $("clock-seconds");
+        var clockDateEl = $("clock-date");
 
         function renderClock() {
-          const now = new Date();
-          clockTimeEl.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
-          clockSecondsEl.textContent = `:${pad(now.getSeconds())}`;
+          var now = new Date();
+          clockTimeEl.textContent = pad(now.getHours()) + ":" + pad(now.getMinutes());
+          clockSecondsEl.textContent = ":" + pad(now.getSeconds());
           clockDateEl.textContent = formatUzDate(now);
-          document.title = `${pad(now.getHours())}:${pad(now.getMinutes())} · Boshqaruv paneli`;
+          document.title = pad(now.getHours()) + ":" + pad(now.getMinutes()) + " · Boshqaruv paneli";
         }
 
         /* ---------------- Pomodoro ---------------- */
-
-        const state = {
+        var state = {
           mode: "focus",
           remaining: settings.focus * 60,
           running: false,
           endAt: 0,
-          sessions: { date: "", count: 0 },
+          sessions: { date: "", count: 0 }
         };
 
-        const pomoTimeEl = $("pomo-time");
-        const pomoBarEl = $("pomo-bar");
-        const pomoStartEl = $("pomo-start");
-        const pomoResetEl = $("pomo-reset");
-        const pomoNoteEl = $("pomo-note");
-        const pomoSessionsEl = $("pomo-sessions");
-        const modeButtons = Array.from(document.querySelectorAll(".pomo-mode"));
+        var pomoTimeEl = $("pomo-time");
+        var pomoBarEl = $("pomo-bar");
+        var pomoStartEl = $("pomo-start");
+        var pomoResetEl = $("pomo-reset");
+        var pomoNoteEl = $("pomo-note");
+        var pomoSessionsEl = $("pomo-sessions");
+        var modeButtons = document.querySelectorAll(".pomo-mode");
 
         function todayKey() {
-          const d = new Date();
-          return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+          var d = new Date();
+          return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
         }
 
         function loadSessions() {
-          const saved = read("sessions", null);
-          const today = todayKey();
-          if (saved && saved.date === today && Number.isFinite(saved.count)) {
+          var saved = read("sessions", null);
+          var today = todayKey();
+          if (saved && saved.date === today && typeof saved.count === "number") {
             state.sessions = { date: today, count: saved.count };
           } else {
             state.sessions = { date: today, count: 0 };
@@ -1502,45 +1130,42 @@
         }
 
         function renderTimer() {
-          const total = Math.max(1, durationFor(state.mode));
-          const minutes = Math.floor(state.remaining / 60);
-          const seconds = state.remaining % 60;
-          pomoTimeEl.textContent = `${pad(minutes)}:${pad(seconds)}`;
-          pomoTimeEl.classList.toggle("is-break", state.mode === "break");
-          const progress = clamp(
-            ((total - state.remaining) / total) * 100,
-            0,
-            100,
-          );
-          pomoBarEl.style.width = `${progress}%`;
+          var total = Math.max(1, durationFor(state.mode));
+          var minutes = Math.floor(state.remaining / 60);
+          var seconds = state.remaining % 60;
+          pomoTimeEl.textContent = pad(minutes) + ":" + pad(seconds);
+          if (state.mode === "break") {
+            pomoTimeEl.className = "pomo-time is-break";
+          } else {
+            pomoTimeEl.className = "pomo-time";
+          }
+          var progress = clamp(((total - state.remaining) / total) * 100, 0, 100);
+          pomoBarEl.style.width = progress + "%";
           pomoStartEl.textContent = state.running ? "To'xtatish" : "Boshlash";
-          pomoSessionsEl.textContent = `${state.sessions.count} seans`;
-          pomoStartEl.setAttribute(
-            "aria-label",
-            state.running ? "Taymerni to'xtatish" : "Taymerni boshlash",
-          );
+          pomoSessionsEl.textContent = state.sessions.count + " seans";
         }
 
-        function setMode(mode, { silent = false } = {}) {
+        function setMode(mode, options) {
+          options = options || {};
           state.mode = mode;
           state.running = false;
           state.endAt = 0;
           state.remaining = durationFor(mode);
-          if (!silent) pomoNoteEl.textContent = "";
-          for (const button of modeButtons) {
-            const active = button.dataset.mode === mode;
-            button.classList.toggle("is-active", active);
-            button.setAttribute("aria-pressed", String(active));
+          if (!options.silent) pomoNoteEl.textContent = "";
+          for (var i = 0; i < modeButtons.length; i++) {
+            var active = modeButtons[i].getAttribute("data-mode") === mode;
+            if (active) {
+              modeButtons[i].className = "pomo-mode is-active";
+            } else {
+              modeButtons[i].className = "pomo-mode";
+            }
           }
           renderTimer();
         }
 
         function startTimer() {
           if (state.running) {
-            state.remaining = Math.max(
-              0,
-              Math.ceil((state.endAt - Date.now()) / 1000),
-            );
+            state.remaining = Math.max(0, Math.ceil((state.endAt - new Date().getTime()) / 1000));
             state.running = false;
             state.endAt = 0;
             pomoNoteEl.textContent = "";
@@ -1549,7 +1174,7 @@
           }
           if (state.remaining <= 0) state.remaining = durationFor(state.mode);
           state.running = true;
-          state.endAt = Date.now() + state.remaining * 1000;
+          state.endAt = new Date().getTime() + state.remaining * 1000;
           pomoNoteEl.textContent = "";
           renderTimer();
         }
@@ -1562,37 +1187,12 @@
           renderTimer();
         }
 
-        function shortBeep() {
-          try {
-            const AudioCtx = window.AudioContext || window.webkitAudioContext;
-            if (!AudioCtx) return;
-            const ctx = new AudioCtx();
-            const oscillator = ctx.createOscillator();
-            const gain = ctx.createGain();
-            const start = ctx.currentTime;
-            oscillator.type = "sine";
-            oscillator.frequency.setValueAtTime(880, start);
-            oscillator.frequency.setValueAtTime(660, start + 0.18);
-            gain.gain.setValueAtTime(0.0001, start);
-            gain.gain.exponentialRampToValueAtTime(0.16, start + 0.02);
-            gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.55);
-            oscillator.connect(gain);
-            gain.connect(ctx.destination);
-            oscillator.start(start);
-            oscillator.stop(start + 0.6);
-            setTimeout(() => ctx.close().catch(() => {}), 900);
-          } catch {
-            /* Audio is a nice-to-have only. */
-          }
-        }
-
         function finishTimer() {
-          const finishedMode = state.mode;
+          var finishedMode = state.mode;
           state.running = false;
           state.endAt = 0;
           state.remaining = 0;
           renderTimer();
-          shortBeep();
 
           if (finishedMode === "focus") {
             state.sessions.count += 1;
@@ -1608,10 +1208,7 @@
 
         function updateTimer() {
           if (!state.running) return;
-          const left = Math.max(
-            0,
-            Math.ceil((state.endAt - Date.now()) / 1000),
-          );
+          var left = Math.max(0, Math.ceil((state.endAt - new Date().getTime()) / 1000));
           if (left <= 0) {
             finishTimer();
             return;
@@ -1622,101 +1219,102 @@
           }
         }
 
-        pomoStartEl.addEventListener("click", startTimer);
-        pomoResetEl.addEventListener("click", resetTimer);
+        pomoStartEl.onclick = startTimer;
+        pomoResetEl.onclick = resetTimer;
 
-        for (const button of modeButtons) {
-          button.addEventListener("click", () => {
-            if (button.dataset.mode === state.mode && !state.running) return;
-            setMode(button.dataset.mode);
-            renderTimer();
-          });
+        for (var i = 0; i < modeButtons.length; i++) {
+          modeButtons[i].onclick = (function(btn) {
+            return function() {
+              var m = btn.getAttribute("data-mode");
+              if (m === state.mode && !state.running) return;
+              setMode(m);
+              renderTimer();
+            };
+          })(modeButtons[i]);
         }
 
         /* ---------------- Todo ---------------- */
+        var todoForm = $("todo-form");
+        var todoInput = $("todo-input");
+        var todoListEl = $("todo-list");
+        var todoEmptyEl = $("todo-empty");
+        var todoCountEl = $("todo-count");
 
-        const todoForm = $("todo-form");
-        const todoInput = $("todo-input");
-        const todoListEl = $("todo-list");
-        const todoEmptyEl = $("todo-empty");
-        const todoCountEl = $("todo-count");
-
-        function saveTodos() {
-          write("todos", todos);
-        }
+        function saveTodos() { write("todos", todos); }
 
         function renderTodos() {
-          todoListEl.replaceChildren();
+          while (todoListEl.firstChild) {
+            todoListEl.removeChild(todoListEl.firstChild);
+          }
 
-          for (const todo of todos) {
-            const item = document.createElement("li");
+          for (var i = 0; i < todos.length; i++) {
+            var todo = todos[i];
+            var item = document.createElement("li");
             item.className = "todo-item" + (todo.done ? " done" : "");
 
-            const checkbox = document.createElement("input");
+            var checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.className = "todo-check";
             checkbox.checked = Boolean(todo.done);
-            checkbox.setAttribute(
-              "aria-label",
-              `${todo.done ? "Bajarilgan" : "Bajarilmagan"}: ${todo.text}`,
-            );
-            checkbox.addEventListener("change", () => {
-              todo.done = checkbox.checked;
-              saveTodos();
-              renderTodos();
-            });
+            checkbox.onchange = (function(t, cb) {
+              return function() {
+                t.done = cb.checked;
+                saveTodos();
+                renderTodos();
+              };
+            })(todo, checkbox);
 
-            const text = document.createElement("span");
+            var text = document.createElement("span");
             text.className = "todo-text";
             text.textContent = todo.text;
 
-            const removeBtn = document.createElement("button");
+            var removeBtn = document.createElement("button");
             removeBtn.type = "button";
             removeBtn.className = "todo-del";
-            removeBtn.setAttribute("aria-label", `O'chirish: ${todo.text}`);
-            removeBtn.title = "O'chirish";
-            removeBtn.innerHTML =
-              '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>';
-            removeBtn.addEventListener("click", () => {
-              todos = todos.filter((entry) => entry.id !== todo.id);
-              saveTodos();
-              renderTodos();
-            });
+            removeBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+            removeBtn.onclick = (function(id) {
+              return function() {
+                var newTodos = [];
+                for (var j = 0; j < todos.length; j++) {
+                  if (todos[j].id !== id) newTodos.push(todos[j]);
+                }
+                todos = newTodos;
+                saveTodos();
+                renderTodos();
+              };
+            })(todo.id);
 
-            item.append(checkbox, text, removeBtn);
-            todoListEl.append(item);
+            item.appendChild(checkbox);
+            item.appendChild(text);
+            item.appendChild(removeBtn);
+            todoListEl.appendChild(item);
           }
 
-          const done = todos.filter((todo) => todo.done).length;
-          todoCountEl.textContent = `${done} / ${todos.length}`;
-          todoCountEl.setAttribute(
-            "aria-label",
-            `${todos.length} tadan ${done} tasi bajarilgan`,
-          );
+          var doneCount = 0;
+          for (var k = 0; k < todos.length; k++) {
+            if (todos[k].done) doneCount++;
+          }
+          todoCountEl.textContent = doneCount + " / " + todos.length;
           todoEmptyEl.hidden = todos.length > 0;
         }
 
-        todoForm.addEventListener("submit", (event) => {
+        todoForm.onsubmit = function(event) {
           event.preventDefault();
-          const text = todoInput.value.trim();
-          if (!text) {
+          var textVal = todoInput.value.replace(/^\s+|\s+$/g, "");
+          if (!textVal) {
             todoInput.focus();
             return;
           }
-          const id =
-            crypto && typeof crypto.randomUUID === "function"
-              ? crypto.randomUUID()
-              : `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
-          todos.push({ id, text, done: false, createdAt: Date.now() });
+          var id = new Date().getTime() + "-" + Math.random().toString(36).substring(2, 9);
+          todos.push({ id: id, text: textVal, done: false, createdAt: new Date().getTime() });
           saveTodos();
           renderTodos();
           todoInput.value = "";
           todoInput.focus();
-        });
+        };
 
-        /* ---------------- Weather ---------------- */
-
-        const weatherEls = {
+        /* ---------------- Weather & Location ---------------- */
+        var weatherEls = {
           city: $("weather-city"),
           country: $("weather-country"),
           temp: $("weather-temp"),
@@ -1725,426 +1323,280 @@
           feels: $("weather-feels"),
           humidity: $("weather-humidity"),
           wind: $("weather-wind"),
-          status: $("weather-status"),
+          status: $("weather-status")
         };
 
-        const WEATHER_CODES = {
-          0: ["Ochiq", "☀️"],
-          1: ["Asosan ochiq", "🌤️"],
-          2: ["Qisman bulutli", "⛅"],
-          3: ["Bulutli", "☁️"],
-          45: ["Tuman", "🌫️"],
-          48: ["Muzli tuman", "🌫️"],
-          51: ["Mayda yomg'ir", "🌦️"],
-          53: ["Mayda yomg'ir", "🌦️"],
-          55: ["Kuchli mayda yomg'ir", "🌧️"],
-          56: ["Muzli mayda yomg'ir", "🌧️"],
-          57: ["Muzli mayda yomg'ir", "🌧️"],
-          61: ["Yengil yomg'ir", "🌦️"],
-          63: ["Yomg'ir", "🌧️"],
-          65: ["Kuchli yomg'ir", "🌧️"],
-          66: ["Muzli yomg'ir", "🌧️"],
-          67: ["Kuchli muzli yomg'ir", "🌧️"],
-          71: ["Yengil qor", "❄️"],
-          73: ["Qor", "❄️"],
-          75: ["Kuchli qor", "❄️"],
-          77: ["Qor donalari", "❄️"],
-          80: ["Yengil yomg'ir yog'ishi", "🌦️"],
-          81: ["Yomg'ir yog'ishi", "🌧️"],
-          82: ["Kuchli yomg'ir yog'ishi", "⛈️"],
-          85: ["Qor yog'ishi", "❄️"],
-          86: ["Kuchli qor yog'ishi", "❄️"],
-          95: ["Momaqaldiroq", "⛈️"],
-          96: ["Do'l bilan momaqaldiroq", "⛈️"],
-          99: ["Kuchli do'l", "⛈️"],
+        var WEATHER_CODES = {
+          0: ["Ochiq", "☀️"], 1: ["Asosan ochiq", "🌤️"], 2: ["Qisman bulutli", "⛅"], 3: ["Bulutli", "☁️"],
+          45: ["Tuman", "🌫️"], 48: ["Muzli tuman", "🌫️"], 51: ["Mayda yomg'ir", "🌦️"], 61: ["Yengil yomg'ir", "🌦️"],
+          63: ["Yomg'ir", "🌧️"], 65: ["Kuchli yomg'ir", "🌧️"], 71: ["Yengil qor", "❄️"], 73: ["Qor", "❄️"],
+          95: ["Momaqaldiroq", "⛈️"]
         };
 
         function describeWeather(code) {
           return WEATHER_CODES[code] || ["Noma'lum", "🌡️"];
         }
 
-        function showWeatherPlaceholders() {
-          weatherEls.temp.textContent = "—";
-          weatherEls.desc.textContent = "Yuklanmoqda…";
-          weatherEls.feels.textContent = "—";
-          weatherEls.humidity.textContent = "—";
-          weatherEls.wind.textContent = "—";
-          weatherEls.status.textContent = "";
-        }
-
-        /* ---------------- Location (shared by weather + prayer) ---------------- */
-
-        // Open-Meteo's geocoder works best with English transliterations.
-        const CITY_ALIASES = {
-          toshkent: "Tashkent",
-          samarqand: "Samarkand",
-          buxoro: "Bukhara",
-          xiva: "Khiva",
-          andijon: "Andijan",
-          "farg'ona": "Fergana",
-          fargona: "Fergana",
-          "qo'qon": "Kokand",
-          qoqon: "Kokand",
-          jizzax: "Jizzakh",
-          navoiy: "Navoi",
-          urganch: "Urgench",
-          qarshi: "Karshi",
-          termiz: "Termez",
-          guliston: "Gulistan",
-        };
+        var CITY_ALIASES = { toshkent: "Tashkent", samarqand: "Samarkand", buxoro: "Bukhara", xiva: "Khiva" };
 
         function englishCityName(value) {
-          const key = value
-            .trim()
-            .toLowerCase()
-            .replace(/[’‘`]/g, "'")
-            .replace(/\s+/g, " ");
-          return CITY_ALIASES[key] || value.trim();
+          var key = value.toLowerCase().replace(/^\s+|\s+$/g, "");
+          return CITY_ALIASES[key] || value;
         }
 
-        let location = null;
-        let locationPromise = null;
-        let locationPromiseCity = null;
+        var currentLocation = null;
 
-        async function resolveLocation() {
-          if (location && location.query === settings.city) return location;
-          if (locationPromise && locationPromiseCity === settings.city)
-            return locationPromise;
-
-          const requestedCity = settings.city;
-          const promise = (async () => {
-            const query = englishCityName(requestedCity);
-            const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=10&language=en&format=json`;
-            const data = await fetchJSON(url);
-            const results =
-              data && Array.isArray(data.results) ? data.results.slice() : [];
-            if (!results.length)
-              throw new Error(
-                `"${requestedCity}" topilmadi. Shahar nomini tekshiring.`,
-              );
-
-            // Prefer the largest matching settlement over obscure namesakes.
-            results.sort(
-              (a, b) =>
-                (Number(b.population) || 0) - (Number(a.population) || 0),
-            );
-            const result = results[0];
-
-            const place = {
-              query: requestedCity,
-              name: result.name,
-              country: result.country || "",
-              latitude: result.latitude,
-              longitude: result.longitude,
-              timezone:
-                result.timezone ||
-                Intl.DateTimeFormat().resolvedOptions().timeZone ||
-                "UTC",
-            };
-
-            // A newer city may have been requested while this one was loading.
-            if (settings.city === requestedCity) {
-              location = place;
-              write("location", place);
-            }
-            return place;
-          })();
-
-          locationPromise = promise;
-          locationPromiseCity = requestedCity;
-
-          try {
-            return await promise;
-          } finally {
-            if (locationPromise === promise) {
-              locationPromise = null;
-              locationPromiseCity = null;
-            }
+        function resolveLocation(callback, errCallback) {
+          if (currentLocation && currentLocation.query === settings.city) {
+            callback(currentLocation);
+            return;
           }
+          var query = englishCityName(settings.city);
+          var url = "https://geocoding-api.open-meteo.com/v1/search?name=" + encodeURIComponent(query) + "&count=1&language=en&format=json";
+          
+          fetchJSON(url, function(data) {
+            var results = data && data.results ? data.results : [];
+            if (!results.length) {
+              errCallback(new Error('Shahar topilmadi'));
+              return;
+            }
+            var res = results[0];
+            currentLocation = {
+              query: settings.city,
+              name: res.name,
+              country: res.country || "",
+              latitude: res.latitude,
+              longitude: res.longitude,
+              timezone: res.timezone || "UTC"
+            };
+            write("location", currentLocation);
+            callback(currentLocation);
+          }, errCallback);
         }
 
-        async function loadWeather() {
+        function loadWeather() {
           weatherEls.status.textContent = "";
           weatherEls.desc.textContent = "Yuklanmoqda…";
-          try {
-            const place = await resolveLocation();
-            if (place.query !== settings.city) return;
-            const params = new URLSearchParams({
-              latitude: String(place.latitude),
-              longitude: String(place.longitude),
-              current:
-                "temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m",
-              daily: "temperature_2m_max,temperature_2m_min",
+          resolveLocation(function(place) {
+            var params = buildQuery({
+              latitude: place.latitude,
+              longitude: place.longitude,
+              current: "temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m",
               timezone: "auto",
-              forecast_days: "1",
+              forecast_days: 1
             });
-            const data = await fetchJSON(
-              `https://api.open-meteo.com/v1/forecast?${params}`,
-            );
-            const current = data.current;
-            if (!current) throw new Error("Ob-havo ma'lumoti topilmadi.");
-
-            const [label, icon] = describeWeather(current.weather_code);
-            const max =
-              data.daily && data.daily.temperature_2m_max
-                ? data.daily.temperature_2m_max[0]
-                : null;
-            const min =
-              data.daily && data.daily.temperature_2m_min
-                ? data.daily.temperature_2m_min[0]
-                : null;
-
-            weatherEls.city.textContent = place.name;
-            weatherEls.country.textContent = place.country;
-            weatherEls.temp.textContent = `${Math.round(current.temperature_2m)}`;
-            weatherEls.icon.textContent = icon;
-            weatherEls.desc.textContent =
-              max !== null && min !== null
-                ? `${label} · ${Math.round(min)}–${Math.round(max)}°`
-                : label;
-            weatherEls.feels.textContent = `${Math.round(current.apparent_temperature)}°C`;
-            weatherEls.humidity.textContent = `${Math.round(current.relative_humidity_2m)}%`;
-            weatherEls.wind.textContent = `${Math.round(current.wind_speed_10m)} km/soat`;
-            weatherEls.status.textContent = "";
-          } catch (error) {
-            weatherEls.desc.textContent = "Ma'lumot mavjud emas";
-            weatherEls.status.textContent = `Ob-havoni yuklab bo'lmadi: ${error.message}`;
-          }
+            fetchJSON("https://api.open-meteo.com/v1/forecast?" + params, function(data) {
+              var cur = data.current;
+              if (!cur) return;
+              var weatherInfo = describeWeather(cur.weather_code);
+              weatherEls.city.textContent = place.name;
+              weatherEls.country.textContent = place.country;
+              weatherEls.temp.textContent = Math.round(cur.temperature_2m);
+              weatherEls.icon.textContent = weatherInfo[1];
+              weatherEls.desc.textContent = weatherInfo[0];
+              weatherEls.feels.textContent = Math.round(cur.apparent_temperature) + "°C";
+              weatherEls.humidity.textContent = Math.round(cur.relative_humidity_2m) + "%";
+              weatherEls.wind.textContent = Math.round(cur.wind_speed_10m) + " km/soat";
+            }, function(err) {
+              weatherEls.desc.textContent = "Xatolik";
+              weatherEls.status.textContent = "Ob-havoni yuklab bo'lmadi.";
+            });
+          }, function(err) {
+            weatherEls.desc.textContent = "Xatolik";
+            weatherEls.status.textContent = err.message;
+          });
         }
 
-        /* ---------------- Prayer times ---------------- */
-
-        const PRAYERS = [
+        /* ---------------- Prayer Times ---------------- */
+        var PRAYERS = [
           { key: "Fajr", label: "Bomdod" },
           { key: "Sunrise", label: "Quyosh chiqishi" },
           { key: "Dhuhr", label: "Peshin" },
           { key: "Asr", label: "Asr" },
           { key: "Maghrib", label: "Shom" },
-          { key: "Isha", label: "Xufton" },
+          { key: "Isha", label: "Xufton" }
         ];
 
-        const prayerListEl = $("prayer-list");
-        const prayerNextEl = $("prayer-next");
-        const prayerStatusEl = $("prayer-status");
-        const prayerTitleEl = $("prayer-title");
-        const prayerHijriEl = $("prayer-hijri");
+        var prayerListEl = $("prayer-list");
+        var prayerNextEl = $("prayer-next");
+        var prayerStatusEl = $("prayer-status");
+        var prayerTitleEl = $("prayer-title");
+        var prayerHijriEl = $("prayer-hijri");
+        var prayerTimes = [];
+        var prayerTimezone = "UTC";
 
-        let prayerTimes = [];
-        let prayerTimezone =
-          Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
-        let highlightedKey = "";
-
-        function cleanTime(value) {
-          const match = String(value || "").match(/(\d{1,2}):(\d{2})/);
-          return match ? `${pad(Number(match[1]))}:${match[2]}` : "—";
+        function cleanTime(val) {
+          var match = String(val || "").match(/(\d{1,2}):(\d{2})/);
+          return match ? pad(Number(match[1])) + ":" + match[2] : "—";
         }
 
         function renderPrayerRows() {
-          prayerListEl.replaceChildren();
-          for (const prayer of prayerTimes) {
-            const row = document.createElement("li");
-            row.className = "prayer-row";
-            row.dataset.key = prayer.key;
-
-            const name = document.createElement("span");
-            name.className = "prayer-name";
-            name.textContent = prayer.label;
-
-            const time = document.createElement("span");
-            time.className = "prayer-time";
-            time.textContent = prayer.time;
-
-            row.append(name, time);
-            prayerListEl.append(row);
+          while (prayerListEl.firstChild) {
+            prayerListEl.removeChild(prayerListEl.firstChild);
           }
-          highlightedKey = "";
+          for (var i = 0; i < prayerTimes.length; i++) {
+            var p = prayerTimes[i];
+            var row = document.createElement("li");
+            row.className = "prayer-row";
+            row.setAttribute("data-key", p.key);
+
+            var name = document.createElement("span");
+            name.className = "prayer-name";
+            name.textContent = p.label;
+
+            var time = document.createElement("span");
+            time.className = "prayer-time";
+            time.textContent = p.time;
+
+            row.appendChild(name);
+            row.appendChild(time);
+            prayerListEl.appendChild(row);
+          }
         }
 
-        async function loadPrayer() {
+        function loadPrayer() {
           prayerStatusEl.textContent = "";
           prayerNextEl.textContent = "Yuklanmoqda…";
-          try {
-            const place = await resolveLocation();
-            if (place.query !== settings.city) return;
+          resolveLocation(function(place) {
             prayerTimezone = place.timezone || prayerTimezone;
+            var nowParts = getZonedParts(prayerTimezone);
+            var dateKey = pad(nowParts.day) + "-" + pad(nowParts.month) + "-" + nowParts.year;
 
-            const nowParts = getZonedParts(prayerTimezone);
-            const dateKey = `${pad(nowParts.day)}-${pad(nowParts.month)}-${nowParts.year}`;
-
-            const params = new URLSearchParams({
-              method: "3",
-              school: "1",
-              latitude: String(place.latitude),
-              longitude: String(place.longitude),
-              timezonestring: prayerTimezone,
+            var params = buildQuery({
+              method: 3,
+              school: 1,
+              latitude: place.latitude,
+              longitude: place.longitude,
+              timezonestring: prayerTimezone
             });
 
-            const data = await fetchJSON(
-              `https://api.aladhan.com/v1/timings/${dateKey}?${params}`,
-            );
-            if (!data || !data.data || !data.data.timings)
-              throw new Error("Vaqtlar topilmadi.");
-
-            prayerTimezone =
-              (data.data.meta && data.data.meta.timezone) || prayerTimezone;
-            const timings = data.data.timings;
-
-            prayerTimes = PRAYERS.map((prayer) => {
-              const time = cleanTime(timings[prayer.key]);
-              const [hours, minutes] = time.split(":").map(Number);
-              return {
-                key: prayer.key,
-                label: prayer.label,
-                time,
-                hours: Number.isFinite(hours) ? hours : 0,
-                minutes: Number.isFinite(minutes) ? minutes : 0,
-              };
+            fetchJSON("https://api.aladhan.com/v1/timings/" + dateKey + "?" + params, function(res) {
+              if (!res || !res.data || !res.data.timings) return;
+              var timings = res.data.timings;
+              prayerTimes = [];
+              for (var i = 0; i < PRAYERS.length; i++) {
+                var p = PRAYERS[i];
+                var tStr = cleanTime(timings[p.key]);
+                var parts = tStr.split(":");
+                prayerTimes.push({
+                  key: p.key,
+                  label: p.label,
+                  time: tStr,
+                  hours: Number(parts[0]) || 0,
+                  minutes: Number(parts[1]) || 0
+                });
+              }
+              prayerTitleEl.textContent = place.name;
+              prayerHijriEl.textContent = formatUzDate(new Date()) + " · " + place.country;
+              renderPrayerRows();
+              updatePrayerCountdown();
+            }, function(err) {
+              prayerStatusEl.textContent = "Namoz vaqtlarini yuklab bo'lmadi.";
             });
-
-            prayerTitleEl.textContent = place.name;
-            const hijri = data.data.date && data.data.date.hijri;
-            prayerHijriEl.textContent = hijri
-              ? `${hijri.day} ${hijri.month.en} ${hijri.year} · ${place.country}`
-              : `${formatUzDate(new Date())} · ${place.country}`;
-
-            renderPrayerRows();
-            updatePrayerCountdown();
-          } catch (error) {
-            prayerTimes = [];
-            prayerListEl.replaceChildren();
-            prayerNextEl.textContent = "";
-            prayerStatusEl.textContent = `Namoz vaqtlarini yuklab bo'lmadi: ${error.message}`;
-          }
+          }, function(err) {
+            prayerStatusEl.textContent = err.message;
+          });
         }
 
         function updatePrayerCountdown() {
           if (!prayerTimes.length) return;
+          var now = cityNowDate(prayerTimezone);
+          var nowSec = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
 
-          const now = cityNowDate(prayerTimezone);
-          const nowSeconds =
-            now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-
-          let next = prayerTimes.find(
-            (prayer) => prayer.hours * 3600 + prayer.minutes * 60 > nowSeconds,
-          );
-          let tomorrow = false;
+          var next = null;
+          for (var i = 0; i < prayerTimes.length; i++) {
+            if (prayerTimes[i].hours * 3600 + prayerTimes[i].minutes * 60 > nowSec) {
+              next = prayerTimes[i];
+              break;
+            }
+          }
+          var tomorrow = false;
           if (!next) {
             next = prayerTimes[0];
             tomorrow = true;
           }
 
-          const target = new Date(now);
+          var target = new Date(now.getTime());
           target.setHours(next.hours, next.minutes, 0, 0);
           if (tomorrow) target.setDate(target.getDate() + 1);
 
-          const diff = Math.max(
-            0,
-            Math.floor((target.getTime() - now.getTime()) / 1000),
-          );
-          const hours = Math.floor(diff / 3600);
-          const minutes = Math.floor((diff % 3600) / 60);
-          const seconds = diff % 60;
+          var diff = Math.max(0, Math.floor((target.getTime() - now.getTime()) / 1000));
+          var h = Math.floor(diff / 3600);
+          var m = Math.floor((diff % 3600) / 60);
+          var s = diff % 60;
 
-          const nextKey = `${next.key}-${tomorrow ? "tomorrow" : "today"}`;
-          if (nextKey !== highlightedKey) {
-            highlightedKey = nextKey;
-            for (const row of prayerListEl.children) {
-              row.classList.toggle("is-next", row.dataset.key === next.key);
-            }
+          while (prayerNextEl.firstChild) {
+            prayerNextEl.removeChild(prayerNextEl.firstChild);
           }
 
-          prayerNextEl.replaceChildren();
-          const left = document.createElement("span");
-          left.append("Keyingi: ");
-          const strong = document.createElement("strong");
-          strong.textContent = next.label + (tomorrow ? " (ertaga)" : "");
-          left.append(strong, ` · ${next.time}`);
+          var leftSpan = document.createElement("span");
+          leftSpan.textContent = "Keyingi: " + next.label + (tomorrow ? " (ertaga)" : "") + " · " + next.time;
 
-          const countdown = document.createElement("span");
-          countdown.className = "prayer-count";
-          countdown.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)} qoldi`;
+          var countSpan = document.createElement("span");
+          countSpan.className = "prayer-count";
+          countSpan.textContent = pad(h) + ":" + pad(m) + ":" + pad(s) + " qoldi";
 
-          prayerNextEl.append(left, " ", countdown);
+          prayerNextEl.appendChild(leftSpan);
+          prayerNextEl.appendChild(countSpan);
         }
 
-        /* ---------------- Settings dialog ---------------- */
-
-        const dialog = $("settings-dialog");
-        const settingsForm = $("settings-form");
-        const cityInput = $("settings-city");
-        const focusInput = $("settings-focus");
-        const breakInput = $("settings-break");
-        const settingsStatus = $("settings-status");
+        /* ---------------- Modal Settings ---------------- */
+        var dialog = $("settings-dialog");
+        var settingsForm = $("settings-form");
+        var cityInput = $("settings-city");
+        var focusInput = $("settings-focus");
+        var breakInput = $("settings-break");
+        var settingsStatus = $("settings-status");
 
         function openSettings() {
           cityInput.value = settings.city;
           focusInput.value = String(settings.focus);
           breakInput.value = String(settings.break);
           settingsStatus.textContent = "";
-          if (typeof dialog.showModal === "function") {
-            dialog.showModal();
-          } else {
-            dialog.setAttribute("open", "");
-          }
+          dialog.style.display = "flex";
           cityInput.focus();
-          cityInput.select();
         }
 
         function closeSettings() {
-          if (typeof dialog.close === "function") dialog.close();
-          else dialog.removeAttribute("open");
+          dialog.style.display = "none";
         }
 
-        $("open-settings").addEventListener("click", openSettings);
-        $("settings-close").addEventListener("click", closeSettings);
-        $("settings-cancel").addEventListener("click", closeSettings);
+        $("open-settings").onclick = openSettings;
+        $("settings-close").onclick = closeSettings;
+        $("settings-cancel").onclick = closeSettings;
 
-        dialog.addEventListener("click", (event) => {
-          if (event.target === dialog) closeSettings();
-        });
-
-        settingsForm.addEventListener("submit", (event) => {
+        settingsForm.onsubmit = function(event) {
           event.preventDefault();
-          const city = cityInput.value.trim();
-          const focus = clamp(
-            Math.round(Number(focusInput.value) || DEFAULTS.focus),
-            1,
-            120,
-          );
-          const rest = clamp(
-            Math.round(Number(breakInput.value) || DEFAULTS.break),
-            1,
-            60,
-          );
+          var cityVal = cityInput.value.replace(/^\s+|\s+$/g, "");
+          var focusVal = clamp(Math.round(Number(focusInput.value) || 25), 1, 120);
+          var breakVal = clamp(Math.round(Number(breakInput.value) || 5), 1, 60);
 
-          if (city.length < 2) {
-            settingsStatus.textContent = "Iltimos, shahar nomini kiriting.";
-            cityInput.focus();
+          if (cityVal.length < 2) {
+            settingsStatus.textContent = "Shahar nomini kiriting.";
             return;
           }
 
-          const cityChanged = city !== settings.city;
-          settings.city = city;
-          settings.focus = focus;
-          settings.break = rest;
+          var cityChanged = cityVal !== settings.city;
+          settings.city = cityVal;
+          settings.focus = focusVal;
+          settings.break = breakVal;
           write("settings", settings);
 
           if (cityChanged) {
-            location = null;
+            currentLocation = null;
             remove("location");
           }
 
           closeSettings();
           resetTimer();
           setMode(state.mode);
-          renderTimer();
           loadWeather();
           loadPrayer();
-        });
+        };
 
-        $("clear-todos").addEventListener("click", () => {
+        $("clear-todos").onclick = function() {
           if (!todos.length) {
-            settingsStatus.textContent = "Vazifalar ro'yxati allaqachon bo'sh.";
+            settingsStatus.textContent = "Vazifalar bo'sh.";
             return;
           }
           if (window.confirm("Barcha vazifalar o'chirilsinmi?")) {
@@ -2153,56 +1605,48 @@
             renderTodos();
             settingsStatus.textContent = "Vazifalar tozalandi.";
           }
-        });
+        };
 
-        $("reset-settings").addEventListener("click", () => {
-          if (!window.confirm("Shahar va Pomodoro sozlamalari tiklanilsinmi?"))
-            return;
+        $("reset-settings").onclick = function() {
+          if (!window.confirm("Sozlamalar tiklansinmi?")) return;
           settings.city = DEFAULTS.city;
           settings.focus = DEFAULTS.focus;
           settings.break = DEFAULTS.break;
           write("settings", settings);
-          location = null;
+          currentLocation = null;
           remove("location");
-          cityInput.value = settings.city;
-          focusInput.value = String(settings.focus);
-          breakInput.value = String(settings.break);
           setMode("focus");
           loadWeather();
           loadPrayer();
           settingsStatus.textContent = "Sozlamalar tiklandi.";
-        });
+        };
 
-        $("weather-refresh").addEventListener("click", loadWeather);
-        $("prayer-refresh").addEventListener("click", loadPrayer);
+        $("weather-refresh").onclick = loadWeather;
+        $("prayer-refresh").onclick = loadPrayer;
 
         /* ---------------- Boot ---------------- */
-
         loadSessions();
         setMode("focus", { silent: true });
         renderClock();
         renderTodos();
-        showWeatherPlaceholders();
 
-        // Restore last known values briefly so the cards are not empty while loading.
-        const cachedLocation = read("location", null);
-        if (cachedLocation && cachedLocation.query === settings.city) {
-          weatherEls.city.textContent = cachedLocation.name || settings.city;
-          weatherEls.country.textContent = cachedLocation.country || "";
-          prayerTitleEl.textContent = cachedLocation.name || settings.city;
+        var cachedLoc = read("location", null);
+        if (cachedLoc && cachedLoc.query === settings.city) {
+          weatherEls.city.textContent = cachedLoc.name;
+          weatherEls.country.textContent = cachedLoc.country;
+          prayerTitleEl.textContent = cachedLoc.name;
         }
 
         loadWeather();
         loadPrayer();
 
-        setInterval(() => {
+        setInterval(function() {
           renderClock();
           updateTimer();
           updatePrayerCountdown();
         }, 500);
 
-        // Roll the daily session counter over at midnight.
-        setInterval(() => {
+        setInterval(function() {
           if (state.sessions.date !== todayKey()) {
             state.sessions = { date: todayKey(), count: 0 };
             write("sessions", state.sessions);
